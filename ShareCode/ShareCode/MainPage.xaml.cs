@@ -37,9 +37,15 @@ public partial class MainPage : ContentPage
             LanguageManager.SetLanguage(radioButton.Content.ToString()!);
             FileFilter.FilterAndUpdateUI(LanguageManager.SelectedLanguage, originFileList, uiFileList);
 
-            if (LanguageManager.SelectedLanguage != ELanguage.None) return;
             var exportButton = this.FindByName<Button>(GlobalConstants.EXPORT);
-            exportButton.IsEnabled = false;
+            if (LanguageManager.SelectedLanguage == ELanguage.None)
+            {
+                exportButton.IsEnabled = false;
+            }
+            else
+            {
+                exportButton.IsEnabled = true;
+            }
         }
     }
 }

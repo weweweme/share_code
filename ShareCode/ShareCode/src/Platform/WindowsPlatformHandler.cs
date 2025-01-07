@@ -5,7 +5,7 @@ namespace ShareCode.src.Platform
 {
     public class WindowsPlatformHandler : PlatformHandler
     {
-        public override async Task OnOpenButtonClicked(ContentPage page, ObservableCollection<FileItem> originFileList, ObservableCollection<FileItem> fileList)
+        public override async Task OnOpenButtonClicked(ContentPage page, ObservableCollection<FileItem> originFileList, ObservableCollection<FileItem> uiFileList)
         {
             var folderResult = await FolderPicker.PickAsync(default);
 
@@ -14,7 +14,7 @@ namespace ShareCode.src.Platform
                 var folderPath = folderResult.Folder.Path;
 
                 string[] files = Directory.GetFiles(folderPath);
-                fileList.Clear();
+                uiFileList.Clear();
                 originFileList.Clear();
 
                 foreach (var file in files)
@@ -22,11 +22,12 @@ namespace ShareCode.src.Platform
                     var fileItem = new FileItem(Path.GetFileName(file), file);
                     fileItem.IsChecked = false;
                     originFileList.Add(fileItem);
-                    fileList.Add(fileItem);
                 }
 
+                FileFilter.FilterAndUpdateUI(LanguageManager.SelectedLanguage, originFileList, uiFileList);
+
                 var exportButton = page.FindByName<Button>(GlobalConstants.EXPORT);
-                exportButton.IsEnabled = fileList.Count > 0;
+                exportButton.IsEnabled = uiFileList.Count > 0;
 
                 Console.WriteLine($"선택된 폴더: {folderPath}");
             }

@@ -34,6 +34,12 @@
         {
             System.Diagnostics.Debug.Assert(_languageExtensions.ContainsKey(language), $"Invalid language: {language}");
 
+            if (language == ELanguage.None)
+            {
+                // "All Files" 선택 시 모든 파일을 포함하도록 처리
+                return new List<string> { "*" }; // '*'는 모든 파일을 의미
+            }
+
             if (_languageExtensions.TryGetValue(language, out var extensions))
             {
                 return extensions;

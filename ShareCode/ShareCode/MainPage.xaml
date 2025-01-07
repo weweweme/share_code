@@ -24,7 +24,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame Padding="5" BorderColor="LightGray" CornerRadius="5" Margin="5">
-                        <Label Text="FileName"
+                        <Label Text="{Binding}"
                                FontSize="14"
                                VerticalOptions="Center"
                                HorizontalOptions="Start" />

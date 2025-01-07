@@ -15,10 +15,12 @@ namespace ShareCode.src.Platform
 
                 string[] files = Directory.GetFiles(folderPath);
                 fileList.Clear();
+                originFileList.Clear();
 
                 foreach (var file in files)
                 {
                     var fileItem = new FileItem(Path.GetFileName(file), file);
+                    fileItem.IsChecked = false;
                     originFileList.Add(fileItem);
                     fileList.Add(fileItem);
                 }

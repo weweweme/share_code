@@ -50,6 +50,7 @@ public partial class MainPage : ContentPage
         fileList.Clear();
         foreach (var file in filteredFiles)
         {
+            file.IsChecked = false;
             fileList.Add(file);
         }
     }

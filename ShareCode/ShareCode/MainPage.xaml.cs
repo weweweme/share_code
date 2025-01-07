@@ -29,22 +29,12 @@ public partial class MainPage : ContentPage
         // Export 버튼은 초기에는 비활성화 상태
         exportButton.IsEnabled = false;
     }
-       
+
     private void OnLanguageChanged(object? sender, CheckedChangedEventArgs e)
     {
         if (sender is RadioButton radioButton && e.Value)
         {
-            // 라디오 버튼 Content를 ELanguage로 매핑
-            LanguageManager.SetLanguage(radioButton.Content.ToString() switch
-            {
-                "C#" => ELanguage.CSharp,
-                "Java" => ELanguage.Java,
-                "C" => ELanguage.C,
-                "C++" => ELanguage.CPP,
-                "Assembly" => ELanguage.Assembly,
-                _ => ELanguage.None
-            });
-
+            LanguageManager.SetLanguage(radioButton.Content.ToString()!);
             FilterFileList(LanguageManager.SelectedLanguage);
         }
     }

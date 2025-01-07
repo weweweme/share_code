@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShareCode")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+7b509df5f87a8eff92138eda4006e6c0e7c63041")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+ba221babe608e9622c9485477063216f8b81c728")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShareCode")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShareCode")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

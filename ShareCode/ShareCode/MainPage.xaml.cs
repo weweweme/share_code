@@ -1,11 +1,12 @@
 ﻿using CommunityToolkit.Maui.Storage;
+using ShareCode.src.System;
 using System.Collections.ObjectModel;
 
 namespace ShareCode;
 
 public partial class MainPage : ContentPage
 {
-    private ObservableCollection<string> fileList = new();
+    private ObservableCollection<FileItem> fileList = new();
 
     public MainPage()
     {
@@ -25,29 +26,24 @@ public partial class MainPage : ContentPage
         exportButton.IsEnabled = false;
     }
 
-    // Open 버튼 클릭 이벤트 핸들러
     private async void OnOpenButtonClicked(object? sender, EventArgs e)
     {
-        if (sender == null)
-        { 
-            // TODO: 추가 처리
-            return; 
-        }
-
         if (OperatingSystem.IsWindows())
         {
-            FolderPickerResult folder = await FolderPicker.PickAsync(default);
+            var folderResult = await FolderPicker.PickAsync(default);
 
-            if (folder != null)
+            if (folderResult?.Folder != null)
             {
-                var folderPath = folder.Folder!.Path;
+                var folderPath = folderResult.Folder.Path;
 
-                // 파일 목록을 가져와 ObservableCollection에 추가
+                // 파일 목록 가져오기
                 string[] files = Directory.GetFiles(folderPath);
                 fileList.Clear();
+
                 foreach (var file in files)
                 {
-                    fileList.Add(Path.GetFileName(file)); // 파일명만 추가
+                    // FileItem 객체 생성자를 사용하여 초기화
+                    fileList.Add(new FileItem(Path.GetFileName(file), file));
                 }
 
                 var exportButton = this.FindByName<Button>("Export");
@@ -55,10 +51,11 @@ public partial class MainPage : ContentPage
 
                 Console.WriteLine($"선택된 폴더: {folderPath}");
             }
+            else
+            {
+                Console.WriteLine("폴더 선택이 취소되었습니다.");
+            }
         }
-
-        // TODO: Open 버튼 클릭 동작 구현 (폴더 선택 등)
-        Console.WriteLine("Open 버튼 클릭");
     }
 
     // Export 버튼 클릭 이벤트 핸들러

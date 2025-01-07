@@ -12,8 +12,7 @@
             { ELanguage.Assembly, new List<string> { ".asm", ".s" } }
         };
 
-        // 현재 선택된 언어
-        private ELanguage _selectedLanguage = ELanguage.CSharp; // 기본값
+        private ELanguage _selectedLanguage = ELanguage.CSharp;
         public ELanguage SelectedLanguage => _selectedLanguage;
     }
 }

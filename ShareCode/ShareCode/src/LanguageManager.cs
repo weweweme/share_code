@@ -2,12 +2,6 @@
 {
     public static class LanguageManager
     {
-        public const string LANGUAGE_CSHARP = "C#";
-        public const string LANGUAGE_JAVA = "Java";
-        public const string LANGUAGE_C = "C";
-        public const string LANGUAGE_CPP = "C++";
-        public const string LANGUAGE_ASSEMBLY = "Assembly";
-
         private static readonly Dictionary<ELanguage, List<string>> _languageExtensions = new()
         {
             { ELanguage.CSharp, new List<string> { ".cs" } },
@@ -19,11 +13,11 @@
 
         private static readonly Dictionary<string, ELanguage> _languageMapping = new()
         {
-            { LANGUAGE_CSHARP, ELanguage.CSharp },
-            { LANGUAGE_JAVA, ELanguage.Java },
-            { LANGUAGE_C, ELanguage.C },
-            { LANGUAGE_CPP, ELanguage.CPP },
-            { LANGUAGE_ASSEMBLY, ELanguage.Assembly }
+            { GlobalConstants.CSHARP, ELanguage.CSharp },
+            { GlobalConstants.JAVA, ELanguage.Java },
+            { GlobalConstants.C, ELanguage.C },
+            { GlobalConstants.CPP, ELanguage.CPP },
+            { GlobalConstants.ASSEMBLY, ELanguage.Assembly }
         };
 
         private static ELanguage _selectedLanguage = ELanguage.CSharp;

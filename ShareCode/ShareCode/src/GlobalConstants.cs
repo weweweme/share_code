@@ -11,5 +11,10 @@
         public const string C = "C";
         public const string CPP = "C++";
         public const string ASSEMBLY = "Assembly";
+
+        public const double WINDOW_WIDTH = 600;
+        public const double WINDOW_HEIGHT = 800;
+        public const double WINDOW_MIN_WIDTH = 600;
+        public const double WINDOW_MIN_HEIGHT = 800;
     }
 }

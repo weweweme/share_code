@@ -28,6 +28,12 @@ public partial class MainPage : ContentPage
 
         // Export 버튼은 초기에는 비활성화 상태
         exportButton.IsEnabled = false;
+
+        var window = Application.Current.Windows[0];
+        window.Height = 800; // 원하는 높이로 설정
+        window.Width = 600;  // 원하는 너비로 설정
+        window.MinimumHeight = 800; // 최소 높이 고정
+        window.MinimumWidth = 600;  // 최소 너비 고정
     }
 
     private void OnLanguageChanged(object? sender, CheckedChangedEventArgs e)

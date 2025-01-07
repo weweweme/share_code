@@ -36,13 +36,11 @@ public partial class MainPage : ContentPage
             {
                 var folderPath = folderResult.Folder.Path;
 
-                // 파일 목록 가져오기
                 string[] files = Directory.GetFiles(folderPath);
                 fileList.Clear();
 
                 foreach (var file in files)
                 {
-                    // FileItem 객체 생성자를 사용하여 초기화
                     fileList.Add(new FileItem(Path.GetFileName(file), file));
                 }
 
@@ -55,6 +53,25 @@ public partial class MainPage : ContentPage
             {
                 Console.WriteLine("폴더 선택이 취소되었습니다.");
             }
+        }
+    }
+
+    private void OnLanguageChanged(object? sender, CheckedChangedEventArgs e)
+    {
+        if (sender is RadioButton radioButton && e.Value)
+        {
+            // 라디오 버튼 Content를 ELanguage로 매핑
+            LanguageManager.SetLanguage(radioButton.Content.ToString() switch
+            {
+                "C#" => ELanguage.CSharp,
+                "Java" => ELanguage.Java,
+                "C" => ELanguage.C,
+                "C++" => ELanguage.CPP,
+                "Assembly" => ELanguage.Assembly,
+                _ => ELanguage.CSharp
+            });
+
+            Console.WriteLine($"선택된 언어: {LanguageManager.SelectedLanguage}");
         }
     }
 

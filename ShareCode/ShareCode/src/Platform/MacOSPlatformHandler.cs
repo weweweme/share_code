@@ -1,19 +1,17 @@
-﻿namespace ShareCode.src.Platform
+﻿using System.Collections.ObjectModel;
+
+namespace ShareCode.src.Platform
 {
     public class MacOSPlatformHandler : PlatformHandler
     {
-        public override async Task OnOpenButtonClicked(object? sender, EventArgs e)
+        public override Task OnOpenButtonClicked(ContentPage page, ObservableCollection<FileItem> originFileList, ObservableCollection<FileItem> fileList)
         {
-            Console.WriteLine("macOS: Open Button Clicked");
-            // macOS 전용 로직 추가
-            await Task.CompletedTask;
+            throw new NotImplementedException();
         }
 
-        public override async Task OnExportButtonClicked(object? sender, EventArgs e)
+        public override Task OnExportButtonClicked(ContentPage page, ObservableCollection<FileItem> fileList)
         {
-            Console.WriteLine("macOS: Export Button Clicked");
-            // macOS 전용 로직 추가
-            await Task.CompletedTask;
+            throw new NotImplementedException();
         }
     }
 }

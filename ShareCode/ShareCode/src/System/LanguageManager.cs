@@ -18,5 +18,10 @@
         {
             _selectedLanguage = language;
         }
+
+        public static List<string> GetLanguage(ELanguage language)
+        {
+            return _languageExtensions[language];
+        }
     }
 }

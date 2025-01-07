@@ -6,7 +6,8 @@ namespace ShareCode;
 
 public partial class MainPage : ContentPage
 {
-    private ObservableCollection<FileItem> fileList = new();
+    private readonly ObservableCollection<FileItem> originFileList = new(); // 원본 리스트
+    private readonly ObservableCollection<FileItem> fileList = new(); // UI에 표시될 리스트
 
     public MainPage()
     {
@@ -41,7 +42,9 @@ public partial class MainPage : ContentPage
 
                 foreach (var file in files)
                 {
-                    fileList.Add(new FileItem(Path.GetFileName(file), file));
+                    var fileItem = new FileItem(Path.GetFileName(file), file);
+                    originFileList.Add(fileItem);
+                    fileList.Add(fileItem);
                 }
 
                 var exportButton = this.FindByName<Button>("Export");
@@ -71,7 +74,22 @@ public partial class MainPage : ContentPage
                 _ => ELanguage.None
             });
 
-            Console.WriteLine($"선택된 언어: {LanguageManager.SelectedLanguage}");
+            FilterFileList(LanguageManager.SelectedLanguage);
+        }
+    }
+
+    private void FilterFileList(ELanguage language)
+    {
+        List<string> extensions = LanguageManager.GetLanguage(language);
+
+        // 원본 리스트에서 필터링
+        List<FileItem> filteredFiles = originFileList.Where(file => extensions.Contains(Path.GetExtension(file.FilePath))).ToList();
+
+        // UI 리스트 업데이트
+        fileList.Clear();
+        foreach (var file in filteredFiles)
+        {
+            fileList.Add(file);
         }
     }
 

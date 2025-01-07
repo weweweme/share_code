@@ -48,11 +48,11 @@
                    HorizontalOptions="Center" />
 
             <!-- 라디오 버튼 -->
-            <RadioButton GroupName="Language" Content="C#" />
-            <RadioButton GroupName="Language" Content="Java" />
-            <RadioButton GroupName="Language" Content="C" />
-            <RadioButton GroupName="Language" Content="C++" />
-            <RadioButton GroupName="Language" Content="Assembly" />
+            <RadioButton GroupName="Language" Content="C#" CheckedChanged="OnLanguageChanged" IsChecked="True" />
+            <RadioButton GroupName="Language" Content="Java" CheckedChanged="OnLanguageChanged" />
+            <RadioButton GroupName="Language" Content="C" CheckedChanged="OnLanguageChanged" />
+            <RadioButton GroupName="Language" Content="C++" CheckedChanged="OnLanguageChanged" />
+            <RadioButton GroupName="Language" Content="Assembly" CheckedChanged="OnLanguageChanged" />
 
             <!-- 버튼 -->
             <StackLayout VerticalOptions="EndAndExpand" Spacing="10">

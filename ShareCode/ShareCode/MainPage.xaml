@@ -18,17 +18,20 @@
 
         <!-- 왼쪽 뷰포트: 파일 목록 영역 -->
         <CollectionView x:Name="FileListView"
-                        Grid.Row="0" Grid.Column="0"
-                        BackgroundColor="White"
-                        Margin="10">
+                Grid.Row="0" Grid.Column="0"
+                BackgroundColor="White"
+                Margin="10"
+                SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Padding="5" BorderColor="LightGray" CornerRadius="5" Margin="5">
-                        <Label Text="FileName"
-                               FontSize="14"
-                               VerticalOptions="Center"
-                               HorizontalOptions="Start" />
-                    </Frame>
+                    <StackLayout Orientation="Horizontal" Padding="5">
+                        <!-- 체크박스 추가 -->
+                        <CheckBox IsChecked="{Binding IsChecked}" />
+                        <Label Text="{Binding FileName}"
+                       FontSize="14"
+                       VerticalOptions="Center"
+                       HorizontalOptions="StartAndExpand" />
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

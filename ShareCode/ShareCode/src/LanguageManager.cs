@@ -2,31 +2,27 @@
 {
     public static class LanguageManager
     {
-        public const string LANGUAGE_CSHARP = "C#";
-        public const string LANGUAGE_JAVA = "Java";
-        public const string LANGUAGE_C = "C";
-        public const string LANGUAGE_CPP = "C++";
-        public const string LANGUAGE_ASSEMBLY = "Assembly";
-
         private static readonly Dictionary<ELanguage, List<string>> _languageExtensions = new()
         {
             { ELanguage.CSharp, new List<string> { ".cs" } },
             { ELanguage.Java, new List<string> { ".java", ".class", ".jar" } },
             { ELanguage.C, new List<string> { ".c", ".h" } },
             { ELanguage.CPP, new List<string> { ".cpp", ".h", ".hpp" } },
-            { ELanguage.Assembly, new List<string> { ".asm", ".s" } }
+            { ELanguage.Assembly, new List<string> { ".asm", ".s" } },
+            { ELanguage.None, new List<string> { "*" } }
         };
 
         private static readonly Dictionary<string, ELanguage> _languageMapping = new()
         {
-            { LANGUAGE_CSHARP, ELanguage.CSharp },
-            { LANGUAGE_JAVA, ELanguage.Java },
-            { LANGUAGE_C, ELanguage.C },
-            { LANGUAGE_CPP, ELanguage.CPP },
-            { LANGUAGE_ASSEMBLY, ELanguage.Assembly }
+            { GlobalConstants.CSHARP, ELanguage.CSharp },
+            { GlobalConstants.JAVA, ELanguage.Java },
+            { GlobalConstants.C, ELanguage.C },
+            { GlobalConstants.CPP, ELanguage.CPP },
+            { GlobalConstants.ASSEMBLY, ELanguage.Assembly },
+            { GlobalConstants.ALL_FILES, ELanguage.None }
         };
 
-        private static ELanguage _selectedLanguage = ELanguage.CSharp;
+        private static ELanguage _selectedLanguage = ELanguage.None;
         public static ELanguage SelectedLanguage => _selectedLanguage;
 
         public static void SetLanguage(string languageName)
@@ -39,6 +35,12 @@
         public static List<string> GetLanguage(ELanguage language)
         {
             System.Diagnostics.Debug.Assert(_languageExtensions.ContainsKey(language), $"Invalid language: {language}");
+
+            if (language == ELanguage.None)
+            {
+                // "All Files" 선택 시 모든 파일을 포함하도록 처리
+                return new List<string> { "*" }; // '*'는 모든 파일을 의미
+            }
 
             if (_languageExtensions.TryGetValue(language, out var extensions))
             {

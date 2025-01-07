@@ -48,7 +48,8 @@
                    HorizontalOptions="Center" />
 
             <!-- 라디오 버튼 -->
-            <RadioButton GroupName="Language" Content="C#" CheckedChanged="OnLanguageChanged" IsChecked="True" />
+            <RadioButton GroupName="Language" Content="All Files" CheckedChanged="OnLanguageChanged" />
+            <RadioButton GroupName="Language" Content="C#" CheckedChanged="OnLanguageChanged" />
             <RadioButton GroupName="Language" Content="Java" CheckedChanged="OnLanguageChanged" />
             <RadioButton GroupName="Language" Content="C" CheckedChanged="OnLanguageChanged" />
             <RadioButton GroupName="Language" Content="C++" CheckedChanged="OnLanguageChanged" />

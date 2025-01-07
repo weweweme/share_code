@@ -7,7 +7,7 @@ namespace ShareCode;
 public partial class MainPage : ContentPage
 {
     private readonly ObservableCollection<FileItem> originFileList = new(); // 원본 리스트
-    private readonly ObservableCollection<FileItem> fileList = new(); // UI에 표시될 리스트
+    private readonly ObservableCollection<FileItem> uiFileList = new(); // UI에 표시될 리스트
 
     public MainPage()
     {
@@ -17,14 +17,14 @@ public partial class MainPage : ContentPage
         var platformHandler = PlatformHandlerFactory.GetPlatformHandler();
 
         // 파일 목록 바인딩
-        FileListView.ItemsSource = fileList;
+        FileListView.ItemsSource = uiFileList;
 
         // 버튼 클릭 이벤트 핸들러 설정
         var openButton = this.FindByName<Button>(GlobalConstants.OPEN);
         var exportButton = this.FindByName<Button>(GlobalConstants.EXPORT);
 
-        openButton.Clicked += async (s, e) => await platformHandler.OnOpenButtonClicked(this, originFileList, fileList);
-        exportButton.Clicked += async (s, e) => await platformHandler.OnExportButtonClicked(this, fileList);
+        openButton.Clicked += async (s, e) => await platformHandler.OnOpenButtonClicked(this, originFileList, uiFileList);
+        exportButton.Clicked += async (s, e) => await platformHandler.OnExportButtonClicked(this, uiFileList);
 
         // Export 버튼은 초기에는 비활성화 상태
         exportButton.IsEnabled = false;
@@ -35,22 +35,17 @@ public partial class MainPage : ContentPage
         if (sender is RadioButton radioButton && e.Value)
         {
             LanguageManager.SetLanguage(radioButton.Content.ToString()!);
-            FilterFileList(LanguageManager.SelectedLanguage);
-        }
-    }
+            FileFilter.FilterAndUpdateUI(LanguageManager.SelectedLanguage, originFileList, uiFileList);
 
-    private void FilterFileList(ELanguage language)
-    {
-        List<string> extensions = LanguageManager.GetLanguage(language);
-
-        // 원본 리스트에서 필터링
-        List<FileItem> filteredFiles = originFileList.Where(file => extensions.Contains(Path.GetExtension(file.FilePath))).ToList();
-
-        // UI 리스트 업데이트
-        fileList.Clear();
-        foreach (var file in filteredFiles)
-        {
-            fileList.Add(file);
+            var exportButton = this.FindByName<Button>(GlobalConstants.EXPORT);
+            if (LanguageManager.SelectedLanguage == ELanguage.None)
+            {
+                exportButton.IsEnabled = false;
+            }
+            else
+            {
+                exportButton.IsEnabled = true;
+            }
         }
     }
 }

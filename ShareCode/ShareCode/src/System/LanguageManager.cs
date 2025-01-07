@@ -2,8 +2,7 @@
 {
     public class LanguageManager
     {
-        // 언어별 확장자 매핑
-        private readonly Dictionary<ELanguage, List<string>> languageExtensions = new()
+        private readonly Dictionary<ELanguage, List<string>> _languageExtensions = new()
         {
             { ELanguage.CSharp, new List<string> { ".cs" } },
             { ELanguage.Java, new List<string> { ".java", ".class", ".jar" } },
@@ -11,6 +10,7 @@
             { ELanguage.CPP, new List<string> { ".cpp", ".h", ".hpp" } },
             { ELanguage.Assembly, new List<string> { ".asm", ".s" } }
         };
+        public IReadOnlyDictionary<ELanguage, List<string>> LanguageExtensions => _languageExtensions;
 
         private ELanguage _selectedLanguage = ELanguage.CSharp;
         public ELanguage SelectedLanguage => _selectedLanguage;

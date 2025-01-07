@@ -1,8 +1,8 @@
 ﻿namespace ShareCode.src.System
 {
-    public class LanguageManager
+    public static class LanguageManager
     {
-        private readonly Dictionary<ELanguage, List<string>> _languageExtensions = new()
+        private static readonly Dictionary<ELanguage, List<string>> _languageExtensions = new()
         {
             { ELanguage.CSharp, new List<string> { ".cs" } },
             { ELanguage.Java, new List<string> { ".java", ".class", ".jar" } },
@@ -10,9 +10,13 @@
             { ELanguage.CPP, new List<string> { ".cpp", ".h", ".hpp" } },
             { ELanguage.Assembly, new List<string> { ".asm", ".s" } }
         };
-        public IReadOnlyDictionary<ELanguage, List<string>> LanguageExtensions => _languageExtensions;
 
-        private ELanguage _selectedLanguage = ELanguage.CSharp;
-        public ELanguage SelectedLanguage => _selectedLanguage;
+        private static ELanguage _selectedLanguage = ELanguage.CSharp;
+        public static ELanguage SelectedLanguage => _selectedLanguage;
+
+        public static void SetLanguage(ELanguage language)
+        {
+            _selectedLanguage = language;
+        }
     }
 }

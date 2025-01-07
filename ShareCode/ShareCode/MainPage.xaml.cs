@@ -68,7 +68,7 @@ public partial class MainPage : ContentPage
                 "C" => ELanguage.C,
                 "C++" => ELanguage.CPP,
                 "Assembly" => ELanguage.Assembly,
-                _ => ELanguage.CSharp
+                _ => ELanguage.None
             });
 
             Console.WriteLine($"선택된 언어: {LanguageManager.SelectedLanguage}");

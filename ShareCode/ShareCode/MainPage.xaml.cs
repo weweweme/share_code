@@ -20,8 +20,8 @@ public partial class MainPage : ContentPage
         FileListView.ItemsSource = fileList;
 
         // 버튼 클릭 이벤트 핸들러 설정
-        var openButton = this.FindByName<Button>("Open");
-        var exportButton = this.FindByName<Button>("Export");
+        var openButton = this.FindByName<Button>(GlobalConstants.OPEN);
+        var exportButton = this.FindByName<Button>(GlobalConstants.EXPORT);
 
         openButton.Clicked += async (s, e) => await platformHandler.OnOpenButtonClicked(this, originFileList, fileList);
         exportButton.Clicked += async (s, e) => await platformHandler.OnExportButtonClicked(this, fileList);

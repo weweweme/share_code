@@ -23,7 +23,7 @@ namespace ShareCode.src.Platform
                     fileList.Add(fileItem);
                 }
 
-                var exportButton = page.FindByName<Button>("Export");
+                var exportButton = page.FindByName<Button>(GlobalConstants.EXPORT);
                 exportButton.IsEnabled = fileList.Count > 0;
 
                 Console.WriteLine($"선택된 폴더: {folderPath}");
@@ -102,19 +102,19 @@ namespace ShareCode.src.Platform
 
         private string GenerateHeader(string fileName)
         {
-            // 파일명과 확장자 구분
+            const int DASH_TOTAL_LENGTH = 100;
+            const int DIVISOR = 2;
+
             var fileBaseName = Path.GetFileNameWithoutExtension(fileName);
             var fileExtension = Path.GetExtension(fileName);
 
-            // 파일명+확장자의 길이
             var totalLength = fileName.Length;
 
             // 확장자가 가운데 오도록 계산
-            var dashCount = 100 - totalLength;
-            var leftDashCount = dashCount / 2;
+            var dashCount = DASH_TOTAL_LENGTH - totalLength;
+            var leftDashCount = dashCount / DIVISOR;
             var rightDashCount = dashCount - leftDashCount;
 
-            // 결과 문자열 생성
             return $"{new string('-', leftDashCount)}{fileBaseName}{fileExtension}{new string('-', rightDashCount)}";
         }
     }

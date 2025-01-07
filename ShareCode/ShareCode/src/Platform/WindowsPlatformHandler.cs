@@ -29,11 +29,10 @@ namespace ShareCode.src.Platform
                 var exportButton = page.FindByName<Button>(GlobalConstants.EXPORT);
                 exportButton.IsEnabled = uiFileList.Count > 0;
 
-                Console.WriteLine($"선택된 폴더: {folderPath}");
-            }
-            else
-            {
-                Console.WriteLine("폴더 선택이 취소되었습니다.");
+                if (LanguageManager.SelectedLanguage == ELanguage.None)
+                {
+                    exportButton.IsEnabled = false;
+                }
             }
         }
 

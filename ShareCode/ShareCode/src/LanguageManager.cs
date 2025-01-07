@@ -8,7 +8,8 @@
             { ELanguage.Java, new List<string> { ".java", ".class", ".jar" } },
             { ELanguage.C, new List<string> { ".c", ".h" } },
             { ELanguage.CPP, new List<string> { ".cpp", ".h", ".hpp" } },
-            { ELanguage.Assembly, new List<string> { ".asm", ".s" } }
+            { ELanguage.Assembly, new List<string> { ".asm", ".s" } },
+            { ELanguage.None, new List<string> { "*" } }
         };
 
         private static readonly Dictionary<string, ELanguage> _languageMapping = new()
@@ -17,10 +18,11 @@
             { GlobalConstants.JAVA, ELanguage.Java },
             { GlobalConstants.C, ELanguage.C },
             { GlobalConstants.CPP, ELanguage.CPP },
-            { GlobalConstants.ASSEMBLY, ELanguage.Assembly }
+            { GlobalConstants.ASSEMBLY, ELanguage.Assembly },
+            { GlobalConstants.ALL_FILES, ELanguage.None }
         };
 
-        private static ELanguage _selectedLanguage = ELanguage.CSharp;
+        private static ELanguage _selectedLanguage = ELanguage.None;
         public static ELanguage SelectedLanguage => _selectedLanguage;
 
         public static void SetLanguage(string languageName)

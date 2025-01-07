@@ -40,8 +40,7 @@ public partial class MainPage : ContentPage
 
             if (folder != null)
             {
-                // 선택된 폴더의 경로
-                var folderPath = folder.Folder.Path;
+                var folderPath = folder.Folder!.Path;
 
                 // 파일 목록을 가져와 ObservableCollection에 추가
                 string[] files = Directory.GetFiles(folderPath);
@@ -51,7 +50,6 @@ public partial class MainPage : ContentPage
                     fileList.Add(Path.GetFileName(file)); // 파일명만 추가
                 }
 
-                // Export 버튼 활성화
                 var exportButton = this.FindByName<Button>("Export");
                 exportButton.IsEnabled = fileList.Count > 0;
 

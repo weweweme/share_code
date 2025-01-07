@@ -2,6 +2,7 @@
 {
     public enum ELanguage
     {
+        None,
         CSharp,
         Java,
         C,

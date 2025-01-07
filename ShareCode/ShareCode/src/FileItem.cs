@@ -1,4 +1,4 @@
-﻿namespace ShareCode.src.System
+﻿namespace ShareCode.src
 {
     public class FileItem
     {

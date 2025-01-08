@@ -1,10 +1,13 @@
-﻿namespace ShareCode.src.Platform
+﻿using System.Diagnostics;
+
+namespace ShareCode.src.Platform
 {
     public static class PlatformHandlerFactory
     {
         public static PlatformHandler GetPlatformHandler()
         {
-            if (OperatingSystem.IsMacOS())
+            Console.WriteLine(Environment.OSVersion);
+            if (OperatingSystem.IsMacCatalyst())
             {
                 return new MacOSPlatformHandler();
             }

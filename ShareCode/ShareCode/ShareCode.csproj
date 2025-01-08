@@ -19,6 +19,7 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<PublishTrimmed>true</PublishTrimmed>
 
 		<!-- Display name -->
 		<ApplicationTitle>ShareCode</ApplicationTitle>

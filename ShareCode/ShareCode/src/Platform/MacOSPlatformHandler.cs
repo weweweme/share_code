@@ -40,7 +40,6 @@ namespace ShareCode.src.Platform
 
         public override async Task OnExportButtonClicked(ContentPage page, ObservableCollection<FileItem> fileList)
         {
-            throw new NotImplementedException();
         }
     }
 }

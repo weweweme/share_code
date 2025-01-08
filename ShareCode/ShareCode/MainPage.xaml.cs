@@ -1,6 +1,7 @@
 ﻿using ShareCode.src;
 using ShareCode.src.Platform;
 using System.Collections.ObjectModel;
+using UIKit;
 
 namespace ShareCode;
 
@@ -29,11 +30,27 @@ public partial class MainPage : ContentPage
         // Export 버튼은 초기에는 비활성화 상태
         exportButton.IsEnabled = false;
 
-        var window = Application.Current.Windows[0];
+        // Mac Catalyst 전용 창 설정
+#if MACCATALYST
+        ConfigureMacCatalystWindow();
+#else
+        // 다른 플랫폼 (예: Windows)
+        var window = Application.Current!.Windows[0];
         window.Height = 800; // 원하는 높이로 설정
         window.Width = 600;  // 원하는 너비로 설정
         window.MinimumHeight = 800; // 최소 높이 고정
         window.MinimumWidth = 600;  // 최소 너비 고정
+#endif
+    }
+    
+    private void ConfigureMacCatalystWindow()
+    {
+        if (UIApplication.SharedApplication.ConnectedScenes.FirstOrDefault<object>() is UIWindowScene windowScene)
+        {
+            // 창 크기와 최소/최대 크기 설정
+            windowScene.SizeRestrictions.MinimumSize = new CoreGraphics.CGSize(600, 800); // 최소 크기
+            windowScene.SizeRestrictions.MaximumSize = new CoreGraphics.CGSize(600, 800); // 최대 크기
+        }
     }
 
     private void OnLanguageChanged(object? sender, CheckedChangedEventArgs e)

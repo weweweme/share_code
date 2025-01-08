@@ -4,7 +4,7 @@
     {
         public static PlatformHandler GetPlatformHandler()
         {
-            if (OperatingSystem.IsMacOS())
+            if (OperatingSystem.IsMacCatalyst())
             {
                 return new MacOSPlatformHandler();
             }

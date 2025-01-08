@@ -5,37 +5,6 @@ namespace ShareCode.src.Platform
 {
     public class WindowsPlatformHandler : PlatformHandler
     {
-        public override async Task OnOpenButtonClicked(ContentPage page, ObservableCollection<FileItem> originFileList, ObservableCollection<FileItem> uiFileList)
-        {
-            var folderResult = await FolderPicker.PickAsync(default);
-
-            if (folderResult?.Folder != null)
-            {
-                var folderPath = folderResult.Folder.Path;
-
-                string[] files = Directory.GetFiles(folderPath);
-                uiFileList.Clear();
-                originFileList.Clear();
-
-                foreach (var file in files)
-                {
-                    var fileItem = new FileItem(Path.GetFileName(file), file);
-                    fileItem.IsChecked = false;
-                    originFileList.Add(fileItem);
-                }
-
-                FileFilter.FilterAndUpdateUI(LanguageManager.SelectedLanguage, originFileList, uiFileList);
-
-                var exportButton = page.FindByName<Button>(GlobalConstants.EXPORT);
-                exportButton.IsEnabled = uiFileList.Count > 0;
-
-                if (LanguageManager.SelectedLanguage == ELanguage.None)
-                {
-                    exportButton.IsEnabled = false;
-                }
-            }
-        }
-
         public override async Task OnExportButtonClicked(ContentPage page, ObservableCollection<FileItem> fileList)
         {
             if (!fileList.Any(file => file.IsChecked))

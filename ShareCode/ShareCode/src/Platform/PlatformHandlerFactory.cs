@@ -1,4 +1,4 @@
-﻿namespace ShareCode.src.Platform
+﻿namespace ShareCode.Platform
 {
     public static class PlatformHandlerFactory
     {

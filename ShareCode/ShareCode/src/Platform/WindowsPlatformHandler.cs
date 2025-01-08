@@ -1,4 +1,6 @@
-﻿namespace ShareCode.src.Platform
+﻿using ShareCode.src;
+
+namespace ShareCode.Platform
 {
     public class WindowsPlatformHandler : PlatformHandler
     {

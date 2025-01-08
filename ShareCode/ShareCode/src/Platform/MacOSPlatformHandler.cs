@@ -1,7 +1,8 @@
 ﻿using System.Diagnostics;
+using ShareCode.src;
 using UIKit;
 
-namespace ShareCode.src.Platform
+namespace ShareCode.Platform
 {
     public class MacOSPlatformHandler : PlatformHandler
     {

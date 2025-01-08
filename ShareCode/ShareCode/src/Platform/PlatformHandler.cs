@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using CommunityToolkit.Maui.Storage;
+using ShareCode.src;
 
-namespace ShareCode.src.Platform
+namespace ShareCode.Platform
 {
     [SuppressMessage("Interoperability", "CA1416:플랫폼 호환성 유효성 검사")]
     public abstract class PlatformHandler
@@ -14,7 +15,7 @@ namespace ShareCode.src.Platform
                 // FolderPicker로 폴더 선택
                 var folderResult = await FolderPicker.PickAsync(CancellationToken.None);
 
-                if (folderResult?.Folder == null)
+                if (folderResult.Folder == null)
                 {
                     Console.WriteLine("폴더가 선택되지 않았습니다.");
                     return;
@@ -63,8 +64,8 @@ namespace ShareCode.src.Platform
             }
 
             // 저장할 폴더 선택
-            var folderResult = await FolderPicker.PickAsync(default);
-            if (folderResult?.Folder == null)
+            var folderResult = await FolderPicker.PickAsync(CancellationToken.None);
+            if (folderResult.Folder == null)
             {
                 await page.DisplayAlert("취소됨", "저장할 폴더를 선택하지 않았습니다.", "확인");
                 return;
@@ -88,27 +89,7 @@ namespace ShareCode.src.Platform
 
             try
             {
-                using (var writer = new StreamWriter(saveFilePath, false))
-                {
-                    foreach (var file in selectedFiles)
-                    {
-                        // 파일명과 확장자를 기반으로 헤더 생성
-                        string header = GenerateHeader(file.FileName);
-                        string footer = new string('-', 100);
-
-                        writer.WriteLine(header);
-                        writer.WriteLine();
-                        writer.WriteLine();
-                        writer.WriteLine(await File.ReadAllTextAsync(file.FilePath));
-                        writer.WriteLine();
-                        writer.WriteLine();
-                        writer.WriteLine(footer);
-                        writer.WriteLine();
-                        writer.WriteLine();
-                        writer.WriteLine();
-                        writer.WriteLine();
-                    }
-                }
+                await WriteFilesAsync(saveFilePath, selectedFiles);
 
                 await page.DisplayAlert("성공", $"파일이 성공적으로 저장되었습니다.\n경로: {saveFilePath}", "확인");
                 Console.WriteLine($"파일이 저장되었습니다: {saveFilePath}");
@@ -120,9 +101,32 @@ namespace ShareCode.src.Platform
             }
         }
         
+        private static async Task WriteFilesAsync(string saveFilePath, List<FileItem> selectedFiles)
+        {
+            await using var writer = new StreamWriter(saveFilePath, false);
+            foreach (var file in selectedFiles)
+            {
+                // 파일명과 확장자를 기반으로 헤더 생성
+                string header = GenerateHeader(file.FileName);
+                string footer = new string('-', 100);
+
+                await writer.WriteLineAsync(header);
+                await writer.WriteLineAsync();
+                await writer.WriteLineAsync();
+                await writer.WriteLineAsync(await File.ReadAllTextAsync(file.FilePath));
+                await writer.WriteLineAsync();
+                await writer.WriteLineAsync();
+                await writer.WriteLineAsync(footer);
+                await writer.WriteLineAsync();
+                await writer.WriteLineAsync();
+                await writer.WriteLineAsync();
+                await writer.WriteLineAsync();
+            }
+        }
+        
         private static string GenerateHeader(string fileName)
         {
-            const int DASH_TOTAL_LENGTH = 100;
+            const int DASH_TOTAL_LENGTH = 80;
             const int DIVISOR = 2;
 
             var fileBaseName = Path.GetFileNameWithoutExtension(fileName);

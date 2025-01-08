@@ -29,5 +29,21 @@
 	<array>
 		<string>fetch</string>
 	</array>
+	<key>CFBundleIdentifier</key>
+	<string></string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>이 앱은 문서 폴더에 저장된 파일을 열기 위해 접근 권한이 필요합니다.</string>
+	<key>UIFileSharingEnabled</key>
+	<false/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<false/>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>이 앱은 데스크탑 폴더에서 파일을 열기 위해 접근 권한이 필요합니다.</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>이 앱은 다운로드 폴더에서 파일을 열기 위해 접근 권한이 필요합니다.</string>
+	<key>NSNetworkVolumesUsageDescription</key>
+	<string>이 앱은 네트워크 드라이브에 저장된 파일을 열기 위해 접근 권한이 필요합니다.</string>
+	<key>NSRemovableVolumesUsageDescription</key>
+	<string>이 앱은 외장 드라이브에 저장된 파일을 열기 위해 접근 권한이 필요합니다.</string>
 </dict>
 </plist>

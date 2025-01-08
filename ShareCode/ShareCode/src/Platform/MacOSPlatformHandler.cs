@@ -10,7 +10,7 @@ namespace ShareCode.src.Platform
         {
         }
         
-        public override void ConfigureWindow(ContentPage page)
+        public override void ConfigureWindow()
         {
             if (UIApplication.SharedApplication.ConnectedScenes.FirstOrDefault<object>() is not UIWindowScene windowScene) return;
             Debug.Assert(windowScene.SizeRestrictions != null);

@@ -30,7 +30,7 @@ public partial class MainPage : ContentPage
         exportButton.IsEnabled = false;
         
         // 창 크기 조정
-        platformHandler.ConfigureWindow(this);
+        platformHandler.ConfigureWindow();
     }
     
     private void OnLanguageChanged(object? sender, CheckedChangedEventArgs e)

@@ -89,7 +89,7 @@ namespace ShareCode.src.Platform
             return $"{new string('-', leftDashCount)}{fileBaseName}{fileExtension}{new string('-', rightDashCount)}";
         }
         
-        public override void ConfigureWindow(ContentPage page)
+        public override void ConfigureWindow()
         {
             var window = Application.Current!.Windows[0];
             window.Height = GlobalConstants.WINDOW_HEIGHT;

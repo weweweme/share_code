@@ -55,6 +55,6 @@ namespace ShareCode.src.Platform
         }
         
         public abstract Task OnExportButtonClicked(ContentPage page, ObservableCollection<FileItem> fileList);
-        public abstract void ConfigureWindow(ContentPage page);
+        public abstract void ConfigureWindow();
     }
 }

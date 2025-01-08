@@ -45,12 +45,12 @@ public partial class MainPage : ContentPage
     
     private void ConfigureMacCatalystWindow()
     {
-        // if (UIApplication.SharedApplication.ConnectedScenes.FirstOrDefault<object>() is UIWindowScene windowScene)
-        // {
-        //     // 창 크기와 최소/최대 크기 설정
-        //     windowScene.SizeRestrictions.MinimumSize = new CoreGraphics.CGSize(600, 800); // 최소 크기
-        //     windowScene.SizeRestrictions.MaximumSize = new CoreGraphics.CGSize(600, 800); // 최대 크기
-        // }
+        if (UIApplication.SharedApplication.ConnectedScenes.FirstOrDefault<object>() is UIWindowScene windowScene)
+        {
+            // 창 크기와 최소/최대 크기 설정
+            windowScene.SizeRestrictions.MinimumSize = new CoreGraphics.CGSize(600, 800); // 최소 크기
+            windowScene.SizeRestrictions.MaximumSize = new CoreGraphics.CGSize(600, 800); // 최대 크기
+        }
     }
 
     private void OnLanguageChanged(object? sender, CheckedChangedEventArgs e)

@@ -19,6 +19,12 @@
 4. 추출하려는 파일들을 체크박스로 선택합니다.
 5. Export 버튼을 클릭하여 파일을 추출합니다.
 
+## macOS의 경우 실행 방법
+
+![macOS files](https://private-user-images.githubusercontent.com/120005202/401065200-ba269cdf-9df5-4210-8842-f9ab53b1bbde.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzYzMjQ4MjksIm5iZiI6MTczNjMyNDUyOSwicGF0aCI6Ii8xMjAwMDUyMDIvNDAxMDY1MjAwLWJhMjY5Y2RmLTlkZjUtNDIxMC04ODQyLWY5YWI1M2IxYmJkZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMTA4JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDEwOFQwODIyMDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mOTI4ODMzYzAyNDg0ODhmYTczMjUyYTFkYjhkNjM5Nzc0MTE4YzNhMGQ1YjY5ODFkMDY2ZmJhZjFkMTBlZDkyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.F4NoMPeS2f4T72FypUTh6LzuZH79KAvLdBPM5lOIh7U)
+
+ShareCode를 클릭합니다.
+
 ## 사용 영상 동영상 링크
 
-[Watch the demo video on YouTube](https://youtu.be/3EdAjL6HsGo)
+[![사용 영상](https://img.youtube.com/vi/3EdAjL6HsGo/0.jpg)](https://youtu.be/3EdAjL6HsGo)

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShareCode.MainPage"
-             Title="PSYC">
+             Title="PSYC"
+             BackgroundColor="#D9D9D9">
 
     <Grid Padding="20">
         <!-- Grid Row와 Column 정의 -->
@@ -11,26 +12,24 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
-            <!-- 왼쪽 파일 목록 영역 -->
             <ColumnDefinition Width="1*" />
-            <!-- 오른쪽 설정 영역 -->
         </Grid.ColumnDefinitions>
 
         <!-- 왼쪽 뷰포트: 파일 목록 영역 -->
         <CollectionView x:Name="FileListView"
-                Grid.Row="0" Grid.Column="0"
-                BackgroundColor="White"
-                Margin="10"
-                SelectionMode="None">
+                        Grid.Row="0" Grid.Column="0"
+                        BackgroundColor="White"
+                        Margin="10"
+                        SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Orientation="Horizontal" Padding="5">
-                        <!-- 체크박스 추가 -->
-                        <CheckBox IsChecked="{Binding IsChecked}" />
+                    <StackLayout Orientation="Horizontal" Padding="5" BackgroundColor="#F5F5F5">
+                        <CheckBox IsChecked="{Binding IsChecked}" Color="Black" />
                         <Label Text="{Binding FileName}"
-                       FontSize="14"
-                       VerticalOptions="Center"
-                       HorizontalOptions="StartAndExpand" />
+                               FontSize="14"
+                               VerticalOptions="Center"
+                               HorizontalOptions="StartAndExpand"
+                               TextColor="Black" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -41,19 +40,20 @@
                      VerticalOptions="Start"
                      Padding="10"
                      Spacing="15"
-                     BackgroundColor="#F9F9F9">
+                     BackgroundColor="#333333"> <!-- 배경색을 어두운 회색으로 설정 -->
             <Label Text="Language"
                    FontAttributes="Bold"
                    FontSize="16"
-                   HorizontalOptions="Center" />
+                   HorizontalOptions="Center"
+                   TextColor="White" /> <!-- 텍스트 색상을 흰색으로 변경 -->
 
             <!-- 라디오 버튼 -->
-            <RadioButton GroupName="Language" Content="All Files" CheckedChanged="OnLanguageChanged" />
-            <RadioButton GroupName="Language" Content="C#" CheckedChanged="OnLanguageChanged" />
-            <RadioButton GroupName="Language" Content="Java" CheckedChanged="OnLanguageChanged" />
-            <RadioButton GroupName="Language" Content="C" CheckedChanged="OnLanguageChanged" />
-            <RadioButton GroupName="Language" Content="C++" CheckedChanged="OnLanguageChanged" />
-            <RadioButton GroupName="Language" Content="Assembly" CheckedChanged="OnLanguageChanged" />
+            <RadioButton GroupName="Language" Content="All Files" CheckedChanged="OnLanguageChanged" TextColor="White" />
+            <RadioButton GroupName="Language" Content="C#" CheckedChanged="OnLanguageChanged" TextColor="White" />
+            <RadioButton GroupName="Language" Content="Java" CheckedChanged="OnLanguageChanged" TextColor="White" />
+            <RadioButton GroupName="Language" Content="C" CheckedChanged="OnLanguageChanged" TextColor="White" />
+            <RadioButton GroupName="Language" Content="C++" CheckedChanged="OnLanguageChanged" TextColor="White" />
+            <RadioButton GroupName="Language" Content="Assembly" CheckedChanged="OnLanguageChanged" TextColor="White" />
 
             <!-- 버튼 -->
             <StackLayout VerticalOptions="EndAndExpand" Spacing="10">
@@ -61,7 +61,7 @@
                         Text="Open"
                         WidthRequest="100"
                         HeightRequest="40"
-                        BackgroundColor="#6200EE"
+                        BackgroundColor="#000000"
                         TextColor="White"
                         CornerRadius="10"
                         HorizontalOptions="Center" />
@@ -71,8 +71,8 @@
                         WidthRequest="100"
                         HeightRequest="40"
                         IsEnabled="False"
-                        BackgroundColor="#E0E0E0"
-                        TextColor="Black"
+                        BackgroundColor="#7D7D7D"
+                        TextColor="White"
                         CornerRadius="10"
                         HorizontalOptions="Center" />
             </StackLayout>
